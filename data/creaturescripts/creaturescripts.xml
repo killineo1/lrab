@@ -1,12 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <creaturescripts>
-	<event name="PlayerLogin" type="login" script="login.lua"/>
-	<event name="SendLoginInfo" type="login" script="sendlogininfo.lua"/>
-	<event name="RemoveBlesses" type="die" script="removeblesses.lua"/>
-	<event name="Give_Bag_After_Death" type="die" script="give_bag_after_death.lua"/>
-	<event name="ExpStage" type="advance" script="exp_stage.lua"/>
-	<event name="ServerRecord" type="login" script="record.lua"/>
-	<event name="giveFirstItems" type="login" script="firstitems.lua" />
-	<event name="lootMessage" type="kill" script="lootmessage.lua"/>
-	<event name="lookPlayer" type="look" script="lookplayer.lua"/>
+	<!-- Player Login -->
+	<event type="login" name="PlayerLogin" event="script" value="login.lua"/>
+
+	<!-- Server Events -->
+	<event type="channeljoin" name="GuildEvents" event="script" value="guild.lua"/>
+	<event type="mailreceive" name="Mail" event="script" value="mail.lua"/>
+	<event type="reportbug" name="ReportBug" script="reportbug.lua"/>
+	<event type="advance" name="AdvanceSave" event="script" value="advancesave.lua"/>
+	<event type="think" name="Idle" event="script" value="idle.lua"/>
+	<event type="think" name="SkullCheck" event="script" value="skullcheck.lua"/>
+	<event type="moveitem" name="MoveItem" event="script" value="houseprotect.lua"/>
+	<event type="moveitem" name="CaveThings" event="script" value="caveThings.lua"/>
 </creaturescripts>

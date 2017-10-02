@@ -3,7 +3,6 @@
 	<health now="280" max="280"/>
 	<look type="49" corpse="1492"/>
 	<targetchange interval="1000" chance="10"/>
-	<targetstrategies nearest="80" health="0" damage="0" random="20"/>
 	<flags>
 		<flag attackable="1"/>
 		<flag hostile="1"/>
@@ -18,7 +17,7 @@
 		<flag runonhealth="0"/>
 	</flags>
 	<attacks>
-		<attack name="melee" interval="1000" skill="38" attack="38"/>
+		<attack name="melee" interval="2000" skill="38" attack="38"/>
 		<attack name="fire" interval="1000" chance="25" range="7" radius="2" target="1" min="-55" max="-155">
 			<attribute key="shootEffect" value="fire"/>
 			<attribute key="areaEffect" value="firearea"/>
@@ -37,7 +36,7 @@
 		<immunity paralyze="1"/>
 		<immunity invisible="1"/>
 	</immunities>
-	<voices interval="1000" chance="5">
+	<voices interval="2000" chance="5">
 	</voices>
 	<loot>
 	</loot>

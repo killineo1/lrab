@@ -1,27 +1,24 @@
--- You should multiply rate values by player rate if you use stages
 local config = {
-	rate_exp = getConfigValue('rate_exp'),
-	rate_skill = getConfigValue('rate_skill'),
-	rate_loot = getConfigValue('rate_loot'),
-	rate_mag = getConfigValue('rate_mag'),
-	rent_period = getConfigValue('houserentperiod'),
-	protection_level = getConfigValue('min_pvp_level')
+	rateExperience = getConfigInfo('rateExperience'),
+	rateSkill = getConfigInfo('rateSkill'),
+	rateLoot = getConfigInfo('rateLoot'),
+	rateMagic = getConfigInfo('rateMagic'),
+	rateSpawnMin = getConfigInfo('rateSpawnMin'),
+	rateSpawnMax = getConfigInfo('rateSpawnMax'),
+	protectionLevel = getConfigInfo('protectionLevel'),
+	stages = getBooleanFromString(getConfigInfo('experienceStages'))
 }
 
-function onSay(cid, words, param)
-	-- Add basic info
-	local str = "Server Information:\n\n"
-	str = str .. "Experience Rate: " .. config.rate_exp .. "x\n"
-	str = str .. "Magic Rate: " .. config.rate_mag .. "x\n"
-	str = str .. "Skill Rate: " .. config.rate_skill .. "x\n"
-	str = str .. "Loot Rate: " .. config.rate_loot .. "x"
-	str = str .. "Protection Level: " .. config.protection_level .. ""
-	
-	-- Add house renting info
-	if(config.rent_period ~= "never") then
-		str = str .. "\nHouse Rent: House rents are paid " .. config.rent_period .. "."
+function onSay(cid, words, param, channel)
+	if(not checkExhausted(cid, 666, 10)) then
+		return false
 	end
 
-	doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, str)
-	return false
+	local exp = config.rateExperience
+	if(config.stages) then
+		exp = getExperienceStage(getPlayerLevel(cid), getVocationInfo(getPlayerVocation(cid)).experienceMultiplier)
+	end
+
+	doPlayerPopupFYI(cid, "Server Information:\n\nExperience rate: x" .. exp .. "\nSkills rate: x" .. config.rateSkill .. "\nLoot rate: x" .. config.rateLoot .. "\nMagic rate: x" .. config.rateMagic .. "\nSpawns rate: x" .. config.rateSpawnMin .. " - x" .. config.rateSpawnMax .. "\nProtection level: " .. config.protectionLevel)
+	return true
 end

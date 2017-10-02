@@ -3,7 +3,6 @@
 	<health now="150" max="150"/>
 	<look type="19" corpse="1496"/>
 	<targetchange interval="1000" chance="0"/>
-	<targetstrategies nearest="100" health="0" damage="0" random="0"/>
 	<flags>
 		<flag attackable="1"/>
 		<flag hostile="1"/>
@@ -18,7 +17,7 @@
 		<flag runonhealth="0"/>
 	</flags>
 	<attacks>
-		<attack name="melee" interval="1000" skill="22" attack="42"/>
+		<attack name="melee" interval="2000" skill="22" attack="42"/>
 	</attacks>
 	<defenses armor="3" defense="10">
 	</defenses>
@@ -27,7 +26,7 @@
 	</elements>
 	<immunities>
 	</immunities>
-	<voices interval="1000" chance="5">
+	<voices interval="2000" chance="5">
 		<voice sentence="Blubb"/>
 	</voices>
 	<loot>

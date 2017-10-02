@@ -1,32 +1,26 @@
+local function doRemoveField(cid, pos)
+	pos.stackpos = 254
+	local field = getThingfromPos(pos)
+	local playerPos = getCreaturePosition(cid)
+
+	if(field.uid > 0 and isInArray(FIELDS, field.itemid) ) then
+		doRemoveItem(field.uid)
+		doSendMagicEffect(pos, CONST_ME_POFF)
+		return LUA_NO_ERROR
+	end
+
+	doPlayerSendDefaultCancel(cid, RETURNVALUE_NOTPOSSIBLE)
+	doSendMagicEffect(playerPos, CONST_ME_POFF)
+	return LUA_ERROR
+end
+
 function onCastSpell(cid, var)
-	local position = variantToPosition(var)
-	local creaturesSize = #getAllCreatures(position)
-	local stackSize = getTileStackItemsSize(position) + creaturesSize
-	local itemsTable = {}
-	local removed = false
-
-	if stackSize > 0 then
-		for i=1,stackSize do
-			position.stackpos = i
-			itemsTable[i] = getTileThingByPos(position)
-		end
-	end
-
-	if #itemsTable > 0 then
-		for k, item in pairs(itemsTable) do
-			if isInArray(FIELDS, item.itemid) then
-				doRemoveItem(item.uid)
-				removed = true
-			end
-		end
-	end
-
-	if removed then
-		doSendMagicEffect(position, CONST_ME_POFF)
-		return true
+	local pos = variantToPosition(var)
+	if(pos.x ~= 0 and pos.y ~= 0 and pos.z ~= 0) then
+		return doRemoveField(cid, pos)
 	end
 
 	doPlayerSendDefaultCancel(cid, RETURNVALUE_NOTPOSSIBLE)
 	doSendMagicEffect(getCreaturePosition(cid), CONST_ME_POFF)
-	return false
+	return LUA_ERROR
 end

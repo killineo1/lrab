@@ -1,14 +1,8 @@
-<?xml version="1.0"?>
-<npc name="Yaman" script="data/npc/scripts/yaman.lua" access="3" lookdir="2" walkinterval="2500">
-  <mana now="800" max="800" />
-  <health now="200" max="200" />
-  <look type="51" head="0" body="0" legs="0" feet="0" />
-  <parameters>
-  
-    <parameter key="message_greet" value="Well, if it isn't a human. Greetings, |PLAYERNAME|!" />
-	<parameter key="message_farewell" value="Goodbye human." />
-	<parameter key="message_placedinqueue" value="One at a time, human. Wait until I have time for you, |PLAYERNAME|." />
-	
-	
-  </parameters>
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Yaman" nameDescription="Yaman, the tools ventor and buyer" script="tools.lua" walkinterval="2000" skull="none" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="137" head="57" body="59" legs="40" feet="76"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello |PLAYERNAME|. I sell all kinds of objects such as ropes and shovels."/>
+	</parameters>
 </npc>

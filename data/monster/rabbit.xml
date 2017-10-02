@@ -3,7 +3,6 @@
 	<health now="15" max="15"/>
 	<look type="74" corpse="3119"/>
 	<targetchange interval="1000" chance="0"/>
-	<targetstrategies nearest="100" health="0" damage="0" random="0"/>
 	<flags>
 		<flag attackable="1"/>
 		<flag hostile="0"/>
@@ -18,7 +17,7 @@
 		<flag runonhealth="15"/>
 	</flags>
 	<attacks>
-		<attack name="melee" interval="1000" skill="0" attack="0"/>
+		<attack name="melee" interval="2000" skill="0" attack="0"/>
 	</attacks>
 	<defenses armor="1" defense="2">
 	</defenses>
@@ -26,10 +25,10 @@
 	</elements>
 	<immunities>
 	</immunities>
-	<voices interval="1000" chance="5">
+	<voices interval="2000" chance="5">
 	</voices>
 	<loot>
 		<item id="2666" chance="85000" countmax="2"/><!-- 2 85% meat -->
-		<item id="2684" chance="10000"/><!-- 10% carrot -->
+		<item id="2684" chance="20000"/><!-- 20% carrot -->
 	</loot>
 </monster>
