@@ -13,12 +13,12 @@
 	displayGamemastersWithOnlineCommand = false
 
 	-- MySql
-	sqlType = "mysql"
+	sqlType = "sqlite"
 	sqlHost = "127.0.0.1"
 	sqlPort = 3306
 	sqlUser = "root"
 	sqlPass = "336679"
-	sqlDatabase = "ot"
+	sqlDatabase = "otx"
 	sqlFile = "schemas/otxserver.s3db"
 	sqlKeepAlive = 0
 	mysqlReadTimeout = 10
@@ -39,12 +39,12 @@
 	-- Account manager
 	accountManager = true
 	namelockManager = true
-	newPlayerChooseVoc = true
-	newPlayerSpawnPosX = 160
-	newPlayerSpawnPosY = 54
-	newPlayerSpawnPosZ = 7
-	newPlayerTownId = 2
-	newPlayerLevel = 8
+	newPlayerChooseVoc = false
+	newPlayerSpawnPosX = 0
+	newPlayerSpawnPosY = 0
+	newPlayerSpawnPosZ = 0
+	newPlayerTownId = 11
+	newPlayerLevel = 1
 	newPlayerMagicLevel = 0
 	generateAccountNumber = false
 	generateAccountSalt = true
@@ -58,7 +58,7 @@
 	fragsToRedSkull = 3
 	fragsSecondToRedSkull = 5
 	fragsThirdToRedSkull = 10
-	redSkullLength = 3 * 24 * 60 * 60
+	redSkullLength = 3 * 24 * 60 * 60 -- Dont edit!! If you edit this, the players will don't get the red skull!
 
 	-- Banishment Config
 	-- killsBanLength works only if useBlackSkull option is disabled.
@@ -78,7 +78,7 @@
 	-- NOTE: showHealth/ManaChangeForMonsters inherites from showHealth/ManaChange.
 	protectionLevel = 1
 	pvpTileIgnoreLevelAndVocationProtection = true
-	allowFightback = true
+	allowFightback = false
 	pzLocked = 60 * 1000
 	huntingDuration = 60 * 1000
 	criticalHitMultiplier = 1
@@ -90,10 +90,10 @@
 	advancedFragList = true
 	useFragHandler = true
 	noDamageToSameLookfeet = false
-	showHealthChange = true
-	showManaChange = true
-	showHealthChangeForMonsters = true
-	showManaChangeForMonsters = true
+	showHealthChange = false
+	showManaChange = false
+	showHealthChangeForMonsters = false
+	showManaChangeForMonsters = false
 	fieldOwnershipDuration = 5 * 1000
 	stopAttackingAtExit = true
 	loginProtectionPeriod = 10 * 1000
@@ -130,7 +130,7 @@
 		-- Rook System
 		rookLevelTo = 5
 		rookLevelToLeaveRook = 8
-		rookTownId = 1
+		rookTownId = 11
 		useRookSystem = true
 
 		-- Paralyze delay
@@ -169,7 +169,7 @@
 		runesHitTopCreature = false
 		charlistBasicInfo = false
 		classicDamageOnWeapons = true
-
+		
 		-- ConfigSpells
 		noAttackHealingSimultaneus = true
 		enableCooldowns = true
@@ -192,7 +192,7 @@
 	-- Deathlist
 	deathListEnabled = true
 	deathListRequiredTime = 1 * 60 * 1000
-	deathAssistCount = 20
+	deathAssistCount = 2
 	maxDeathRecords = 5
 	multipleNames = false
 
@@ -232,12 +232,12 @@
 	-- Map
 	-- NOTE: storeTrash costs more memory, but will perform alot faster cleaning.
 	-- houseDataStorage usage may be found at how-use-internal-functions.log
-	mapAuthor = "Mattyx14"
+	mapAuthor = "BrewsterL"
 	randomizeTiles = true
 	houseDataStorage = "binary-tilebased"
 	storeTrash = true
 	cleanProtectedZones = true
-	mapName = "map.otbm"
+	mapName = "world.otbm"
 
 	-- Mailbox
 	mailMaxAttempts = 5
@@ -254,7 +254,7 @@
 	defaultPriority = "higher"
 	niceLevel = 5
 	serviceThreads = 1
-	coresUsed = "-1" -- ("0, 1, 2, 3") -- For QuadCore ONLY Windows
+	coresUsed = "-1"
 	startupDatabaseOptimization = true
 	removePremiumOnInit = true
 	confirmOutdatedVersion = false
@@ -269,7 +269,7 @@
 	disableOutfitsForPrivilegedPlayers = false
 	bankSystem = true
 	spellNameInsteadOfWords = false
-	emoteSpells = true
+	emoteSpells = false
 	unifiedSpells = true
 	promptExceptionTracerErrorBox = true
 	storePlayerDirection = false
@@ -289,14 +289,13 @@
 	ghostModeSpellEffects = true
 
 	-- Limits
-	-- Tile Limits set to 0 for prevent crash
 	idleWarningTime = 14 * 60 * 1000
 	idleKickTime = 15 * 60 * 1000
 	expireReportsAfterReads = 1
 	playerQueryDeepness = -1
-	protectionTileLimit = 0
-	houseTileLimit = 0
-	tileLimit = 0
+	protectionTileLimit = 10
+	houseTileLimit = 10
+	tileLimit = 7
 
 	-- Premium-related
 	freePremium = false

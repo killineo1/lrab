@@ -540,6 +540,14 @@ void Player::sendIcons() const
 			icons |= (*it)->getIcons();
 	}
 
+	if(getZone() == ZONE_PROTECTION)
+	{
+		icons |= ICON_NONE;
+	}
+
+	if(pzLocked)
+		icons |= ICON_NONE;
+
 	// Tibia client debugs with 10 or more icons
 	// so let's prevent that from happening.
 	std::bitset<20> icon_bitset((uint64_t)icons);
@@ -2529,17 +2537,17 @@ Item* Player::createCorpse(DeathList deathList)
 	return corpse;
 }
 
-void Player::addCombatExhaust(uint32_t ticks, Exhaust_t exhaust)
+void Player::addCooldown(uint32_t ticks, uint16_t spellId)
 {
 	if(Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT,
-		CONDITION_EXHAUST_COMBAT, ticks, 0, false, (int32_t)exhaust))
+		CONDITION_SPELLCOOLDOWN, ticks, 0, false, spellId))
 		addCondition(condition);
 }
 
 void Player::addExhaust(uint32_t ticks, Exhaust_t exhaust)
 {
 	if(Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT,
-		CONDITION_EXHAUST_HEAL, ticks, 0, false, (int32_t)exhaust))
+		CONDITION_EXHAUST, ticks, 0, false, (int32_t)exhaust))
 		addCondition(condition);
 }
 

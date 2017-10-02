@@ -257,10 +257,12 @@ enum ConditionParam_t
 
 enum Exhaust_t
 {
-	EXHAUST_OTHER = 0,
-	EXHAUST_HEALING = 1,
-	EXHAUST_COMBAT = 2,
-	EXHAUST_MELEE = 3
+	EXHAUST_SPELLGROUP_NONE = 1,
+	EXHAUST_SPELLGROUP_ATTACK = 2,
+	EXHAUST_SPELLGROUP_HEALING = 3,
+	EXHAUST_SPELLGROUP_SUPPORT = 4,
+	EXHAUST_SPELLGROUP_SPECIAL = 5,
+	EXHAUST_MELEE = 6
 };
 
 enum BlockType_t
@@ -341,9 +343,7 @@ enum ConditionId_t
 enum PlayerSex_t
 {
 	PLAYERSEX_FEMALE = 0,
-	PLAYERSEX_MALE,
-	PLAYERSEX_FEMALE_VIP,
-	PLAYERSEX_MALE_VIP
+	PLAYERSEX_MALE
 	// DO NOT ADD HERE! Every higher sex is only for your
 	// own use- each female should be even and male odd.
 };

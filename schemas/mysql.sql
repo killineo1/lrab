@@ -51,6 +51,7 @@ CREATE TABLE `accounts`
 ) ENGINE = InnoDB;
 
 INSERT INTO `accounts` VALUES (1, '111111', '41da8bef22aaef9d7c5821fa0f0de7cccc4dda4d', '', 65535, 0, '', '0', 0, 0, 1);
+INSERT INTO `accounts` VALUES (2, '10', '6250b88a767ae098bd19d18ab9d484f917fcaf6b', '', 65535, 0, '', '0', 0, 0, 1);
 
 CREATE TABLE `players`
 (
@@ -113,7 +114,7 @@ CREATE TABLE `players`
 	FOREIGN KEY (`account_id`) REFERENCES `accounts`(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-INSERT INTO `players` VALUES (1, 'Account Manager', 0, 1, 1, 1, 0, 150,  150, 0, 0, 0, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 160, 54, 7, '', 400, 0,  0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 201660000, 0, 100, 100, 100, 100, 10, 0,  0, 0, 0, 0, '');
+INSERT INTO `players` VALUES (1, 'Account Manager', 0, 1, 1, 1, 0, 150, 150, 0, 0, 0, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0, 11, 32097, 32219, 7, '', 400, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 201660000, 0, 100, 100, 100, 100, 10, 0, 0, 0, 0, 0, '');
 
 CREATE TABLE `account_viplist`
 (
@@ -143,6 +144,7 @@ CREATE TABLE `player_depotitems`
 	`itemtype` INT NOT NULL,
 	`count` INT NOT NULL DEFAULT 0,
 	`attributes` BLOB NOT NULL,
+	`serial` VARCHAR(255) NOT NULL,
 	KEY (`player_id`), UNIQUE (`player_id`, `sid`),
 	FOREIGN KEY (`player_id`) REFERENCES `players`(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
@@ -155,6 +157,7 @@ CREATE TABLE `player_items`
 	`itemtype` INT NOT NULL DEFAULT 0,
 	`count` INT NOT NULL DEFAULT 0,
 	`attributes` BLOB NOT NULL,
+	`serial` VARCHAR(255) NOT NULL,
 	KEY (`player_id`), UNIQUE (`player_id`, `sid`),
 	FOREIGN KEY (`player_id`) REFERENCES `players`(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
@@ -267,6 +270,7 @@ CREATE TABLE `tile_store`
 	`house_id` INT UNSIGNED NOT NULL,
 	`world_id` TINYINT(4) UNSIGNED NOT NULL DEFAULT 0,
 	`data` LONGBLOB NOT NULL,
+	`serial` VARCHAR(255) NOT NULL,
 	FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
@@ -298,6 +302,7 @@ CREATE TABLE `house_data`
 	`house_id` INT UNSIGNED NOT NULL,
 	`world_id` TINYINT(4) UNSIGNED NOT NULL DEFAULT 0,
 	`data` LONGBLOB NOT NULL,
+	`serial` VARCHAR(255) NOT NULL,
 	UNIQUE (`house_id`, `world_id`),
 	FOREIGN KEY (`house_id`, `world_id`) REFERENCES `houses`(`id`, `world_id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
@@ -324,6 +329,7 @@ CREATE TABLE `tile_items`
 	`itemtype` INT NOT NULL,
 	`count` INT NOT NULL DEFAULT 0,
 	`attributes` BLOB NOT NULL,
+	`serial` VARCHAR(255) NOT NULL,
 	UNIQUE (`tile_id`, `world_id`, `sid`), KEY (`sid`),
 	FOREIGN KEY (`tile_id`) REFERENCES `tiles`(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
